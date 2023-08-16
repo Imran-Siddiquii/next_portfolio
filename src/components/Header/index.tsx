@@ -1,13 +1,15 @@
-"use client";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import { Stack } from "@mui/material";
-import Link from "next/link";
-import { DeveloperMode, ColorLensOutlined } from "@mui/icons-material";
-import { useStyle } from "./useStyle";
-import React from "react";
-import { ThemeModal } from "../ThemeModal";
-const Header = () => {
+'use client';
+
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { Stack } from '@mui/material';
+import Link from 'next/link';
+import { DeveloperMode, ColorLensOutlined } from '@mui/icons-material';
+import React from 'react';
+import useStyle from './useStyle';
+import ThemeModal from '../ThemeModal';
+
+function Header() {
   const classes = useStyle();
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
@@ -23,9 +25,9 @@ const Header = () => {
           <Grid item xs={4} md={4}>
             <Stack
               spacing={{ xs: 2, sm: 2 }}
-              alignItems={"center"}
+              alignItems="center"
               direction="row"
-              justifyContent={"center"}
+              justifyContent="center"
               flexWrap="wrap"
             >
               <DeveloperMode fontSize="large" className={classes.logo} />
@@ -36,9 +38,9 @@ const Header = () => {
             item
             xs={8}
             md={8}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"center"}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
           >
             <Stack
               spacing={{ xs: 2, sm: 8 }}
@@ -46,11 +48,11 @@ const Header = () => {
               direction="row"
               flexWrap="wrap"
             >
-              <Link href={"/"}>Home</Link>
-              <Link href={"/work"}>Work</Link>
-              <Link href={"/about"}>About</Link>
-              <Link href={"/blogs"}>Blog</Link>
-              <Link href={"/contact"}>Contact</Link>
+              <Link href="/">Home</Link>
+              <Link href="/work">Work</Link>
+              <Link href="/about">About</Link>
+              <Link href="/blogs">Blog</Link>
+              <Link href="/contact">Contact</Link>
               <Stack
                 spacing={{ xs: 1, sm: 1 }}
                 direction="row"
@@ -64,9 +66,9 @@ const Header = () => {
           </Grid>
         </Grid>
       </Box>
-      <ThemeModal open={open} handleCloseButton={handleClose} />
+      <ThemeModal open={open} handleCloseButton={() => handleClose()} />
     </>
   );
-};
+}
 
 export default Header;

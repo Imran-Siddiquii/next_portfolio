@@ -1,21 +1,21 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
-import Typography from "@mui/material/Typography";
-import { HexColorPicker } from "react-colorful";
-import { Box, Grid, Paper } from "@mui/material";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Typography from '@mui/material/Typography';
+import { HexColorPicker } from 'react-colorful';
+import { Box, Grid, Paper } from '@mui/material';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialogContent-root": {
+  '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
   },
-  "& .MuiDialogActions-root": {
+  '& .MuiDialogActions-root': {
     padding: theme.spacing(1),
   },
 }));
@@ -37,7 +37,7 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
           aria-label="close"
           onClick={onClose}
           sx={{
-            position: "absolute",
+            position: 'absolute',
             right: 8,
             top: 8,
             color: (theme) => theme.palette.grey[500],
@@ -56,39 +56,44 @@ interface ThemeModalProps {
 }
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(2),
-  textAlign: "center",
+  textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
-export const ThemeModal: React.FC<ThemeModalProps> = ({
+export default function ThemeModal({
   open,
   handleCloseButton,
-}) => {
-  const [backgroundColor, setBackgroundColor] = React.useState("#aabbcc");
+}: ThemeModalProps) {
+  const [backgroundColor, setBackgroundColor] = React.useState('#aabbcc');
 
-  const [textColor, setTextColor] = React.useState("#aa5412");
+  const [textColor, setTextColor] = React.useState('#aa5412');
 
-  const [headingColor, setHeadingColor] = React.useState("#a59999");
+  const [headingColor, setHeadingColor] = React.useState('#a59999');
 
   function handleClose(): void {
     handleCloseButton();
   }
-  const submitTheme=()=>{
-    const themeColor={backgroundColor,textColor,headingColor}
+  const submitTheme = () => {
+    const themeColor = { backgroundColor, textColor, headingColor };
     handleCloseButton();
-  }
+    // eslint-disable-next-line no-console
+    console.log(
+      '🚀 ~ file: ThemeModal.tsx:81 ~ submitTheme ~ themeColor:',
+      themeColor,
+    );
+  };
   return (
     <div>
       <BootstrapDialog
-        onClose={handleClose}
+        onClose={() => handleClose()}
         aria-labelledby="customized-dialog-title"
         open={open}
       >
         <BootstrapDialogTitle
           id="customized-dialog-title"
-          onClose={handleClose}
+          onClose={() => handleClose()}
         >
           Customize Portfolio Theme
         </BootstrapDialogTitle>
@@ -103,7 +108,7 @@ export const ThemeModal: React.FC<ThemeModalProps> = ({
                 <Item>
                   <Typography mb={2}>Background Color</Typography>
                   <HexColorPicker
-                    style={{ margin: "auto" }}
+                    style={{ margin: 'auto' }}
                     color={backgroundColor}
                     onChange={setBackgroundColor}
                   />
@@ -113,7 +118,7 @@ export const ThemeModal: React.FC<ThemeModalProps> = ({
                 <Item>
                   <Typography mb={2}>Text Color</Typography>
                   <HexColorPicker
-                    style={{ margin: "auto" }}
+                    style={{ margin: 'auto' }}
                     color={textColor}
                     onChange={setTextColor}
                   />
@@ -123,7 +128,7 @@ export const ThemeModal: React.FC<ThemeModalProps> = ({
                 <Item>
                   <Typography mb={2}>Heading Text Color</Typography>
                   <HexColorPicker
-                    style={{ margin: "auto" }}
+                    style={{ margin: 'auto' }}
                     color={headingColor}
                     onChange={setHeadingColor}
                   />
@@ -133,9 +138,11 @@ export const ThemeModal: React.FC<ThemeModalProps> = ({
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" onClick={submitTheme}>Save Theme</Button>
+          <Button variant="contained" onClick={submitTheme}>
+            Save Theme
+          </Button>
         </DialogActions>
       </BootstrapDialog>
     </div>
   );
-};
+}

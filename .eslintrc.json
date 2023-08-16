@@ -1,3 +1,95 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "next",
+    "airbnb",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "destructuring": true,
+      "objectLiteralShorthandProperties": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/no-use-before-define": 0,
+    "react/react-in-jsx-scope": 0,
+    "prettier/prettier": "error",
+    "arrow-body-style": "off",
+    // "prefer-arrow-callback": "off",
+    // "import/no-cycle": 0,
+    "react-hooks/exhaustive-deps": 0,
+    "react/require-default-props": 0,
+    "react/jsx-no-useless-fragment": 0,
+    "react/jsx-props-no-spreading": 0,
+    "no-shadow": "off",
+    "react/jsx-props-no-functions": "off",
+    // for export arrow function
+    // "react/function-component-definition": [
+    //   "error",
+    //   {
+    //     "namedComponents": [
+    //       "function-expression",
+    //       "arrow-function",
+    //       "function-declaration"
+    //     ],
+    //     "unnamedComponents": ["function-expression", "arrow-function"]
+    //   }
+    // ],
+    "import/extensions": 0,
+    "react/jsx-filename-extension": [
+      0,
+      {
+        "allow": "as-needed"
+      }
+    ],
+    "template-curly-spacing": [
+      "error"
+    ],
+    "prefer-template": [
+      "error"
+    ],
+    "prefer-destructuring": [
+      "error"
+    ],
+    "no-useless-computed-key": [
+      "error",
+      {
+        "enforceForClassMembers": false
+      }
+    ],
+    "no-duplicate-imports": [
+      "error",
+      {
+        "includeExports": false
+      }
+    ]
+  },
+  "ignorePatterns": [
+    "node_modules",
+    "yarn-lock",
+    "next",
+    ".gitignore",
+    "build",
+    "out"
+  ]
 }

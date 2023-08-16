@@ -1,0 +1,11 @@
+# ignor file
+**/node_modules/
+**.next/
+yarn.lock
+.gitignore
+
+# next.js
+**out/
+
+# production
+/build
