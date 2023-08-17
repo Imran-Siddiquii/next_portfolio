@@ -1,28 +1,43 @@
+'use client';
+
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import themeLocal from '../utils/themeLocal';
 
 interface themeInterface {
   backgroundColor: string;
   textColor: string;
   headingColor: string;
 }
-const themeSlice = createSlice({
-  name: 'theme',
-  initialState: {
+
+const defaultTheme = () => {
+  if (themeLocal.getData()) {
+    themeLocal.getData();
+  } else {
+    themeLocal.setData({
+      backgroundColor: '#255557',
+      textColor: '#ef2555',
+      headingColor: '#548357',
+    });
+  }
+  return {
     backgroundColor: '#255557',
     textColor: '#ef2555',
     headingColor: '#548357',
-  } as themeInterface,
+  };
+};
+const initialState = defaultTheme();
+const themeSlice = createSlice({
+  name: 'theme',
+  initialState,
   reducers: {
-    getTheme: (state: themeInterface, action) => {
-      // eslint-disable-next-line no-console
-      console.log('🚀 ~ file: index.tsx:17 ~ themeInterface:', state, action);
-    },
+    getTheme: () => {},
     updateTheme: (
       state: themeInterface,
-      action: PayloadAction<{ value: themeInterface }>,
+      action: PayloadAction<{ themeColor: themeInterface }>,
     ) => {
-      // eslint-disable-next-line no-console
-      console.log('🚀 ~ file: index.tsx:17 ~ themeInterface:', state, action);
+      const { themeColor } = action.payload;
+      themeLocal.setData(themeColor);
+      return themeColor;
     },
   },
 });

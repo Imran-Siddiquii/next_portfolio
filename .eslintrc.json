@@ -24,19 +24,15 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": [
-    "@typescript-eslint",
-    "react",
-    "prettier"
-  ],
+  "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/no-use-before-define": 0,
     "react/react-in-jsx-scope": 0,
     "prettier/prettier": "error",
     "arrow-body-style": "off",
-    // "prefer-arrow-callback": "off",
-    // "import/no-cycle": 0,
+    "prefer-arrow-callback": "off",
+    "import/no-cycle": 0,
     "react-hooks/exhaustive-deps": 0,
     "react/require-default-props": 0,
     "react/jsx-no-useless-fragment": 0,
@@ -62,15 +58,9 @@
         "allow": "as-needed"
       }
     ],
-    "template-curly-spacing": [
-      "error"
-    ],
-    "prefer-template": [
-      "error"
-    ],
-    "prefer-destructuring": [
-      "error"
-    ],
+    "template-curly-spacing": ["error"],
+    "prefer-template": ["error"],
+    "prefer-destructuring": ["error"],
     "no-useless-computed-key": [
       "error",
       {

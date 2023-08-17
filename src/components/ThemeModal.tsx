@@ -10,6 +10,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import { HexColorPicker } from 'react-colorful';
 import { Box, Grid, Paper } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { updateTheme } from '@/app/theme';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -67,16 +69,15 @@ export default function ThemeModal({
   handleCloseButton,
 }: ThemeModalProps) {
   const [backgroundColor, setBackgroundColor] = React.useState('#aabbcc');
-
   const [textColor, setTextColor] = React.useState('#aa5412');
-
   const [headingColor, setHeadingColor] = React.useState('#a59999');
-
+  const dispatch = useDispatch();
   function handleClose(): void {
     handleCloseButton();
   }
   const submitTheme = () => {
     const themeColor = { backgroundColor, textColor, headingColor };
+    dispatch(updateTheme({ themeColor }));
     handleCloseButton();
     // eslint-disable-next-line no-console
     console.log(
@@ -101,6 +102,7 @@ export default function ThemeModal({
           <Box sx={{ flexGrow: 1 }}>
             <Grid
               container
+              justifyContent="center"
               spacing={{ xs: 2, md: 2 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
